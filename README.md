@@ -20,6 +20,7 @@ Welcome to the `admw-modified` repository! This open-source trading strategy is 
 
 ### Signal Logic
 - **Long Equities:** Choose the equity asset with the highest positive momentum (e.g., QQQE or EFA).
+- **Short Term Treasury Filter:** equity assets not only need to show positive returns but higher returns than IEI
 - **Safety Assets:** If equity momentum is weak, choose the safety asset with the highest momentum (e.g., TLT or UUP).
 - **Flat:** Maintain no position if no assets meet the criteria.
 
@@ -79,7 +80,7 @@ We welcome contributions from the community! Feel free to:
 ---
 
 ## Credit
-This strategy builds upon the Accelerated Dual Momentum concept published by Swhanly from [EngineeredPortfolio.com](https://engineeredportfolio.com), based on Gary Antonacci's original Dual Momentum framework. We modified the frequency to monthly, applied it to different ETFs, and added additional filters.
+This strategy builds upon the Accelerated Dual Momentum concept published by Swhanly from [EngineeredPortfolio.com](https://engineeredportfolio.com), based on Gary Antonacci's original Dual Momentum framework. We modified the frequency to weekly, applied it to different ETFs, and added additional filters.
 
 ---
 
