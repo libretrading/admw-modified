@@ -1,4 +1,4 @@
-# LibreTrading.org: admw-modified
+# admw-modified
 
 Welcome to the `admw-modified` repository! This open-source trading strategy is a Modified Accelerated Dual Momentum Weekly Portfolio Strategy with Filters, applied to a diversified set of ETFs. This strategy helps investors achieve optimal portfolio allocation using momentum-based signals and weekly adjustments.
 
