@@ -14,9 +14,9 @@ roc21 = data.pct_change(21)
 roc63 = data.pct_change(63)
 roc126 = data.pct_change(126)
 
-# Step 3: Calculate momentum for RSP and SCZ
-momentum_rsp = (roc21['QQEW'] + roc63['QQEW'] + roc126['QQEW']) / 3
-momentum_scz = (roc21['EFA'] + roc63['EFA'] + roc126['EFA']) / 3
+# Step 3: Calculate momentum for qqew and efa
+momentum_qqew = (roc21['QQEW'] + roc63['QQEW'] + roc126['QQEW']) / 3
+momentum_efa = (roc21['EFA'] + roc63['EFA'] + roc126['EFA']) / 3
 momentum_iei = (roc21['IEI'] + roc63['IEI'] + roc126['IEI']) / 3
 
 # Calculate ROC21 for TLT and UUP
@@ -30,7 +30,7 @@ weekly_dates = data.resample('W-FRI').last().index
 # Step 5: Initialize variables for equity and position tracking
 initial_balance = 10000  # Starting with $10,000
 equity = np.full(len(data), initial_balance)  # Start with initial balance for each day
-positions = np.zeros(len(data), dtype=int)  # Track position (1 for RSP, 2 for SCZ, 3 for TLT, 4 for UUP)
+positions = np.zeros(len(data), dtype=int)  # Track position (1 for qqew, 2 for efa, 3 for TLT, 4 for UUP)
 
 ## Step 6: Iterate over each weekly date to apply the trading logic and update positions
 current_position = None  # Track current position
@@ -41,8 +41,8 @@ for date in weekly_dates:
         idx = data.index.get_loc(date)
 
         # Get momentum values on the last trading day of the week
-        rsp_mom = momentum_rsp.iloc[idx]
-        scz_mom = momentum_scz.iloc[idx]
+        qqew_mom = momentum_qqew.iloc[idx]
+        efa_mom = momentum_efa.iloc[idx]
         iei_mom = momentum_iei.iloc[idx]
         
         tlt_mom = roc21_tlt.iloc[idx]
@@ -50,10 +50,10 @@ for date in weekly_dates:
         
 
         # Determine the position based on momentum values
-        if rsp_mom > scz_mom and rsp_mom > iei_mom and rsp_mom > 0:
-            current_position = 1  # Long RSP
-        elif scz_mom > rsp_mom and scz_mom > iei_mom and scz_mom > 0:
-            current_position = 2  # Long SCZ
+        if qqew_mom > efa_mom and qqew_mom > iei_mom and qqew_mom > 0:
+            current_position = 1  # Long qqew
+        elif efa_mom > qqew_mom and efa_mom > iei_mom and efa_mom > 0:
+            current_position = 2  # Long efa
         # if not long equities
         else:
             current_position = 3 if tlt_mom > uup_mom else 4
