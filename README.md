@@ -19,7 +19,7 @@ Welcome to the `admw-modified` repository! This open-source trading strategy is 
    - Includes safety assets (e.g., TLT, UUP) to switch to during weak equity momentum.
 
 ### Signal Logic
-- **Long Equities:** Choose the equity asset with the highest positive momentum (e.g., RSP or SCZ).
+- **Long Equities:** Choose the equity asset with the highest positive momentum (e.g., QQQE or EFA).
 - **Safety Assets:** If equity momentum is weak, choose the safety asset with the highest momentum (e.g., TLT or UUP).
 - **Flat:** Maintain no position if no assets meet the criteria.
 
